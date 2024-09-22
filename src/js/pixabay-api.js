@@ -5,8 +5,8 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { handleSuccess } from './render-functions.js';
 import { refs } from '../main.js';
 
-const BASE_URL = 'https://pixabay.com/api/?key=';
-const API_KEY = '46052576-a4ef4f0d52180e04b4399e04b';
+const BASE_URL = 'https://pixabay.com/api/';
+const API_KEY = '46118726-f37cd2f98d2a6e2b7b3af8ac8';
 
 export function fetchImages(value) {
   fetch(
