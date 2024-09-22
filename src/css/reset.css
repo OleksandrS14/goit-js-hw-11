@@ -21,6 +21,7 @@ ul {
 a {
   color: currentColor;
   text-decoration: none;
+  transition: 0.3s ease-in-out;
 }
 
 button {
@@ -31,4 +32,5 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  object-fit: cover;
 }

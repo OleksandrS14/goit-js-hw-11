@@ -8,6 +8,7 @@
 
   color: #242424;
   background-color: rgba(255, 255, 255, 0.87);
+  box-sizing: border-box;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,9 +20,11 @@
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
+  padding: 20px;
 }
 
 main {
@@ -29,4 +32,8 @@ main {
 }
 main:has(.back-link) {
   text-align: center;
+}
+
+.btn-back {
+  margin-bottom: 10px;
 }
