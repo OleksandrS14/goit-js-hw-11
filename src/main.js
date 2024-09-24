@@ -11,6 +11,7 @@ export const refs = {
 refs.form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
+  event.preventDefault();
   const form = event.currentTarget;
   const inputValue = form.elements.state.value;
   event.preventDefault();

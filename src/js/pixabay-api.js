@@ -10,7 +10,7 @@ const API_KEY = '46118726-f37cd2f98d2a6e2b7b3af8ac8';
 
 export function fetchImages(value) {
   fetch(
-    `${BASE_URL}${API_KEY}&q=${value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=30`
+    `${BASE_URL}?key=${API_KEY}&q=${value}&image_type=photo&orientation=horizontal&safesearch=true`
   )
     .then(response => response.json())
     .then(data => {
