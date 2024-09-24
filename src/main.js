@@ -14,7 +14,7 @@ function handleSubmit(event) {
   event.preventDefault();
   const form = event.currentTarget;
   const inputValue = form.elements.state.value;
-  event.preventDefault();
+  
 
   refs.gallery.innerHTML = '';
 
@@ -27,6 +27,6 @@ function handleSubmit(event) {
   }
 
   fetchImages(inputValue);
-
+  refs.form.reset();
   refs.loader.style.display = 'inline-block';
 }
