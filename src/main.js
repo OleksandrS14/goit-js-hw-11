@@ -13,7 +13,7 @@ refs.form.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
   const form = event.currentTarget;
-  const inputValue = form.elements.state.value;
+  const inputValue = form.elements.state.value.trim();
   
 
   refs.gallery.innerHTML = '';
@@ -26,7 +26,19 @@ function handleSubmit(event) {
     return;
   }
 
-  fetchImages(inputValue);
-  refs.form.reset();
   refs.loader.style.display = 'inline-block';
+  fetchImages(inputValue)
+  .then(() => {
+    refs.loader.style.display = 'none';
+  })
+  .catch(error => {
+      refs.loader.style.display = 'none';
+      iziToast.error({
+        message: 'Error fetching images. Please try again later.',
+        position: 'bottomRight',
+      });
+      console.error(error); 
+    });
+
+  refs.form.reset(); 
 }
