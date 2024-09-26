@@ -9,13 +9,16 @@ const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '46118726-f37cd2f98d2a6e2b7b3af8ac8';
 
 export function fetchImages(value) {
-  fetch(
-    `${BASE_URL}?key=${API_KEY}&q=${value}&image_type=photo&orientation=horizontal&safesearch=true`
+  return fetch(
+    `${BASE_URL}?key=${API_KEY}&q=${value}&image_type=photo&orientation=horizontal&safesearch=true&per_page=30`
   )
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
-      refs.loader.style.display = 'none';
-
       if (data.hits.length === 0) {
         iziToast.error({
           message:
@@ -24,6 +27,7 @@ export function fetchImages(value) {
         });
         return;
       }
+
       const markup = handleSuccess(data.hits);
       refs.gallery.insertAdjacentHTML('beforeend', markup);
 
@@ -32,10 +36,10 @@ export function fetchImages(value) {
         captionsData: 'alt',
       });
 
-      library.refresh();
+      library.refresh(); 
     })
     .catch(error => {
-      refs.loader.style.display = 'none';
-      console.log(error);
+      console.error('Error fetching images:', error);
+      throw error; 
     });
 }
